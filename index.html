@@ -22,10 +22,11 @@
 .group-body{padding:20px} .subgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .subcard{display:flex;flex-direction:column;min-height:110px;padding:15px;border:1px solid #d7e5ed;border-radius:11px;background:linear-gradient(180deg,#fff,#f7fbfd);text-decoration:none;transition:.2s;cursor:pointer}
 .subcard:hover{transform:translateY(-2px);border-color:#7ebddc;box-shadow:0 7px 16px #176fb918;background:#f3fbff} .subcard strong{color:var(--azul-oscuro);font-size:1.02rem;margin-bottom:7px} .subcard:hover strong{color:var(--verde)} .subcard span{color:var(--texto);font-size:.9rem;line-height:1.4}
+@media(max-width:1050px){.portal-options{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-card:last-child{grid-column:1/-1}}
 @media(max-width:850px){.subgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:650px){.header-banner{padding:18px 14px 22px}.header-logo-box{width:100%;padding:9px 12px;margin-bottom:16px}.header-banner h1{font-size:1.22rem;white-space:normal}.container{padding:0 16px}.portal-options,.menu-talleres,.subgrid{grid-template-columns:1fr}.group-head{align-items:flex-start}}
+@media(max-width:650px){.header-banner{padding:18px 14px 22px}.header-logo-box{width:100%;padding:9px 12px;margin-bottom:16px}.header-banner h1{font-size:1.22rem;white-space:normal}.container{padding:0 16px}.portal-options,.menu-talleres,.subgrid{grid-template-columns:1fr}.portal-card:last-child{grid-column:auto}.group-head{align-items:flex-start}}
 
-.portal-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
+.portal-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
 .portal-card{display:flex;flex-direction:column;min-height:245px;padding:30px 28px;background:#fff;border:1px solid var(--linea);border-left:7px solid var(--verde);border-radius:16px;box-shadow:0 8px 24px #163d5a14;transition:.2s}
 .portal-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #163d5a22}
 .portal-title{display:flex;align-items:flex-start;gap:14px;margin:0 0 14px}
@@ -55,6 +56,11 @@
 <div class="portal-title"><span class="portal-icon" aria-hidden="true">📦</span><h2>Formularios de Solicitud de Material de los Talleres LHACyS</h2></div>
 <p>Solicita el material fungible e inventariable necesario para los talleres, seminarios y actividades docentes del LHACyS.</p>
 <button class="portal-button" type="button" onclick="mostrarMateriales()">Acceder a Materiales</button>
+</article>
+<article class="portal-card">
+<div class="portal-title"><span class="portal-icon" aria-hidden="true">🤝</span><h2>Formulario de Préstamo de Material</h2></div>
+<p>Solicita el préstamo de material del Laboratorio de Habilidades Clínicas y Simulación para la realización de una actividad.</p>
+<a class="portal-button" href="PRESTAMO.html">Acceder a Préstamo</a>
 </article>
 </section>
 </main>
