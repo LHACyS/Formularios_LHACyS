@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LHACyS - Solicitud de Espacios</title>
+<style>
+:root{--azul:#1a82e2;--azul-oscuro:#1267b5;--verde:#28a745;--verde-oscuro:#218838;--rojo:#dc3545;--tinta:#2c3e50;--texto:#555;--fondo:#f5f7fa;--linea:#dcdfe6;--azul-suave:#eef5fc}
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;margin:0;padding:0 0 40px;background:var(--fondo);color:#333}
+.header-banner{display:flex;align-items:center;gap:22px;padding:14px 40px;margin-bottom:30px;background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));color:#fff;box-shadow:0 2px 5px #0002}
+.header-banner-logo{display:block;flex:0 0 92px;width:92px;height:92px;object-fit:contain;border-radius:12px;background:#fff;box-shadow:0 4px 12px #0003}
+.header-banner h1{margin:0;font-size:clamp(1.35rem,2.25vw,2rem);line-height:1.2}
+.container{padding:0 40px;max-width:1200px;margin:0 auto}
+.instruction{font-size:1.05em;color:var(--texto);line-height:1.55;margin-bottom:25px}
+.section-title{color:var(--tinta);margin:0 0 16px;font-size:1.3em;border-bottom:2px solid var(--azul);padding-bottom:5px;display:inline-block}
+.form-box{background:#fff;padding:24px;border-radius:8px;border:1px solid var(--linea);box-shadow:0 4px 12px #0000000d;margin-bottom:26px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.form-group{display:flex;flex-direction:column;min-width:0}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-weight:bold;margin-bottom:8px;color:var(--tinta);line-height:1.35}
+.required{color:#c82333}
+.form-control{width:100%;padding:11px 12px;border:1px solid var(--linea);border-radius:5px;font:1em Arial,sans-serif;color:#333;background:#fff;transition:border-color .2s,box-shadow .2s}
+.form-control:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px #1a82e226}
+textarea.form-control{min-height:90px;line-height:1.45;resize:vertical;overflow:hidden}
+textarea.large{min-height:125px}
+.field-help{margin:7px 0 0;color:#6b7785;font-size:.86em;line-height:1.4}
+.print-value{display:none;width:100%;min-height:43px;padding:11px 12px;border:1px solid #ccc;border-radius:5px;font:1em/1.45 Arial,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere}
+.contenedor-botones-fijos{display:flex;justify-content:center;gap:20px;margin-top:40px;padding:20px;background:var(--fondo);border-top:1px solid var(--linea)}
+.btn-accion{padding:12px 24px;font-size:1em;font-weight:bold;border-radius:6px;cursor:pointer;border:0;transition:background .2s}
+.btn-enviar-print{background:var(--verde);color:#fff}.btn-enviar-print:hover{background:var(--verde-oscuro)}
+.btn-cancelar{background:var(--rojo);color:#fff}.btn-cancelar:hover{background:#c82333}
+body.modal-abierto{overflow:hidden}.modal-pdf{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px}.modal-pdf.visible{display:flex}
+.modal-pdf-fondo{position:absolute;inset:0;background:#142332a3;backdrop-filter:blur(3px)}
+.modal-pdf-panel{position:relative;width:min(590px,100%);background:#fff;border-radius:15px;box-shadow:0 20px 60px #0005;overflow:hidden;animation:aparecer .22s ease-out}
+@keyframes aparecer{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-pdf-cabecera{display:flex;align-items:center;gap:16px;padding:22px 25px;color:#fff;background:linear-gradient(135deg,var(--azul),var(--azul-oscuro))}
+.modal-pdf-icono{display:flex;align-items:center;justify-content:center;flex:0 0 64px;height:64px;border-radius:14px;background:#ffffff29;font-size:2rem}
+.modal-pdf-cabecera h2{margin:0 38px 4px 0;font-size:1.32em}.modal-pdf-cabecera p{margin:0;color:#ffffffe0;font-size:.93em}
+.modal-cerrar{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#fff;font-size:2em;cursor:pointer}
+.modal-contenido{padding:24px 27px 18px;color:#3d4852;line-height:1.5}.modal-exito{display:flex;align-items:center;gap:9px;margin:0 0 19px;font-weight:600;color:#247438}
+.modal-exito span{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:var(--verde);color:#fff;font-weight:800}
+.modal-dato{margin-bottom:13px;padding:13px 15px;border:1px solid #dce5ed;border-radius:8px;background:#f8fafc}.modal-etiqueta{display:block;margin-bottom:4px;color:#687582;font-size:.82em;font-weight:700;text-transform:uppercase}.modal-valor{display:block;color:#1f405d;overflow-wrap:anywhere}
+.modal-aviso{margin-top:18px;padding:14px 16px;border-left:4px solid var(--azul);border-radius:6px;background:#eef7ff;color:var(--tinta)}
+.modal-acciones{display:flex;justify-content:flex-end;gap:12px;padding:18px 27px 25px}.modal-btn{min-width:135px;padding:11px 20px;border-radius:7px;font-size:.98em;font-weight:bold;cursor:pointer}.modal-principal{border:1px solid var(--verde-oscuro);background:var(--verde);color:#fff}.modal-secundario{border:1px solid #cbd3da;background:#fff;color:#4b5560}
+@media(max-width:700px){.header-banner{gap:14px;padding:12px 16px}.header-banner-logo{flex-basis:68px;width:68px;height:68px}.header-banner h1{font-size:1.18rem}.container{padding:0 16px}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}.contenedor-botones-fijos{flex-direction:column}.btn-accion{width:100%}}
+@media(max-width:560px){.modal-pdf-cabecera{padding:19px}.modal-contenido{padding:21px 20px 15px}.modal-acciones{flex-direction:column-reverse;padding:16px 20px 21px}.modal-btn{width:100%}}
+@media print{
+ @page{margin:12mm}
+ body{background:#fff!important;padding:0;font-size:10.5pt}.header-banner{box-shadow:none!important;margin-bottom:18px;background:var(--azul)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:10px 20px}.header-banner-logo{width:65px!important;height:65px!important;flex-basis:65px!important;box-shadow:none!important}.header-banner h1{font-size:16pt}
+ .container{padding:0;max-width:none}.instruction,.contenedor-botones-fijos,.modal-pdf,.field-help{display:none!important}.form-box{box-shadow:none;padding:15px;margin-bottom:16px;break-inside:auto}.form-grid{gap:12px 16px}.form-control{display:none!important}.print-value{display:block!important;min-height:38px}.section-title{font-size:12.5pt;margin-bottom:10px}.form-group{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header class="header-banner">
+  <img class="header-banner-logo" src="logo_LHACys_rrss.jpg" alt="Logotipo LHACyS y UAM">
+  <h1>LHACyS - Solicitud de Reserva de Espacios</h1>
+</header>
+<main class="container">
+  <p class="instruction">Cumplimente los datos de la solicitud de reserva. Cuando finalice, pulse <strong>«Guardar como PDF y preparar correo»</strong>. Guarde el documento como PDF y, después, adjúntelo al correo que se preparará automáticamente.</p>
+
+  <section class="form-box">
+    <h2 class="section-title">Datos de la reserva</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="fechas">Fechas solicitadas <span class="required">*</span></label>
+        <textarea id="fechas" class="form-control auto" rows="3" placeholder="Ej.: 15 y 22 de octubre de 2026" required></textarea><div class="print-value"></div>
+        <p class="field-help">Puede indicar una o varias fechas.</p>
+      </div>
+      <div class="form-group">
+        <label for="horario">Horario <span class="required">*</span></label>
+        <textarea id="horario" class="form-control auto" rows="3" placeholder="Ej.: de 09:00 a 12:00" required></textarea><div class="print-value"></div>
+        <p class="field-help">Si hay varios días, especifique el horario de cada uno.</p>
+      </div>
+      <div class="form-group full">
+        <label for="asignatura">Asignatura, curso o máster al que corresponde <span class="required">*</span></label>
+        <input id="asignatura" class="form-control" type="text" placeholder="Indique la asignatura, curso o máster" required><div class="print-value"></div>
+      </div>
+      <div class="form-group full">
+        <label for="titulo">Título del taller <span class="required">*</span></label>
+        <input id="titulo" class="form-control" type="text" placeholder="Indique el título completo del taller" required><div class="print-value"></div>
+      </div>
+      <div class="form-group full">
+        <label for="profesorado">Profesorado: coordinadores o responsables y forma de localización <span class="required">*</span></label>
+        <textarea id="profesorado" class="form-control auto large" placeholder="Nombre y apellidos, correo electrónico y/o teléfono de contacto" required></textarea><div class="print-value"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-box">
+    <h2 class="section-title">Necesidades de espacio y organización</h2>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label for="espacio">Espacio necesario <span class="required">*</span></label>
+        <textarea id="espacio" class="form-control auto" placeholder="Indique el espacio o los espacios necesarios" required></textarea><div class="print-value"></div>
+      </div>
+      <div class="form-group">
+        <label for="alumnos">Número de alumnos por grupo <span class="required">*</span></label>
+        <input id="alumnos" class="form-control" type="number" min="1" inputmode="numeric" placeholder="Ej.: 12" required><div class="print-value"></div>
+      </div>
+      <div class="form-group">
+        <label for="grupos">Número de grupos al año que realizarán el taller <span class="required">*</span></label>
+        <input id="grupos" class="form-control" type="number" min="1" inputmode="numeric" placeholder="Ej.: 8" required><div class="print-value"></div>
+      </div>
+      <div class="form-group full">
+        <label for="habilidad">Habilidad concreta que se desarrollará <span class="required">*</span></label>
+        <textarea id="habilidad" class="form-control auto large" placeholder="Describa la habilidad clínica o de simulación" required></textarea><div class="print-value"></div>
+      </div>
+      <div class="form-group full">
+        <label for="objetivos">Objetivos del taller <span class="required">*</span></label>
+        <textarea id="objetivos" class="form-control auto large" placeholder="Describa los objetivos docentes del taller" required></textarea><div class="print-value"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="contenedor-botones-fijos">
+  <button type="button" class="btn-accion btn-enviar-print" onclick="imprimirConNombreDinamico()">Guardar como PDF y preparar correo</button>
+  <button type="button" class="btn-accion btn-cancelar" onclick="cerrarPestana()">Cerrar pestaña</button>
+</div>
+
+<div id="modal-pdf" class="modal-pdf" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+  <div class="modal-pdf-fondo" onclick="cerrarDialogoPDF()"></div>
+  <div class="modal-pdf-panel">
+    <div class="modal-pdf-cabecera"><div class="modal-pdf-icono" aria-hidden="true">✉️</div><div><h2 id="modal-titulo">Solicitud preparada correctamente</h2><p>Adjunte el PDF y envíe el correo para completar la solicitud</p></div><button type="button" class="modal-cerrar" onclick="cerrarDialogoPDF()" aria-label="Cerrar">&times;</button></div>
+    <div class="modal-contenido">
+      <p class="modal-exito"><span>✓</span> El documento se ha preparado para guardarlo como PDF.</p>
+      <div class="modal-dato"><span class="modal-etiqueta">Archivo que debe adjuntar</span><strong id="modal-archivo" class="modal-valor"></strong></div>
+      <div class="modal-dato"><span class="modal-etiqueta">Destinatario</span><strong class="modal-valor">habilidades.clinicas.simulacion@uam.es</strong></div>
+      <div class="modal-aviso"><strong>Antes de enviar:</strong> localice el PDF que acaba de guardar y adjúntelo manualmente al correo.</div>
+    </div>
+    <div class="modal-acciones"><button type="button" class="modal-btn modal-secundario" onclick="cerrarDialogoPDF()">Cerrar</button><button type="button" id="btn-correo" class="modal-btn modal-principal" onclick="confirmarCorreo()">✉ Abrir correo</button></div>
+  </div>
+</div>
+
+<script>
+const DESTINATARIO='habilidades.clinicas.simulacion@uam.es';
+const campos=['fechas','horario','asignatura','titulo','profesorado','espacio','alumnos','grupos','habilidad','objetivos'];
+document.querySelectorAll('textarea.auto').forEach(c=>c.addEventListener('input',()=>ajustarAltura(c)));
+function ajustarAltura(c){c.style.height='auto';c.style.height=Math.max(c.classList.contains('large')?125:90,c.scrollHeight)+'px'}
+function prepararImpresion(){campos.forEach(id=>{const c=document.getElementById(id),p=c.nextElementSibling;p.textContent=c.value.trim()||'No especificado';if(c.tagName==='TEXTAREA')ajustarAltura(c)})}
+function limpiarNombreArchivo(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[<>:"/\\|?*\x00-\x1F]/g,'').replace(/\s+/g,'_')}
+function validar(){const faltan=campos.filter(id=>!document.getElementById(id).value.trim());if(faltan.length){document.getElementById(faltan[0]).focus();alert('Por favor, complete todos los campos obligatorios antes de generar el PDF.');return false}return true}
+function nombrePDF(){const d=new Date(),f=String(d.getFullYear()).slice(-2)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');const t=document.getElementById('titulo').value.trim()||'Sin_titulo';return limpiarNombreArchivo('Solicitud_de_espacios_'+t+'_'+f)}
+function imprimirConNombreDinamico(){if(!validar())return;prepararImpresion();const n=nombrePDF(),original=document.title;document.title=n;window.print();document.title=original;mostrarDialogoPDF(n)}
+function mostrarDialogoPDF(n){const m=document.getElementById('modal-pdf');m.dataset.nombre=n;document.getElementById('modal-archivo').textContent=n+'.pdf';m.classList.add('visible');m.setAttribute('aria-hidden','false');document.body.classList.add('modal-abierto');document.getElementById('btn-correo').focus()}
+function cerrarDialogoPDF(){const m=document.getElementById('modal-pdf');m.classList.remove('visible');m.setAttribute('aria-hidden','true');document.body.classList.remove('modal-abierto')}
+function confirmarCorreo(){const n=document.getElementById('modal-pdf').dataset.nombre,t=document.getElementById('titulo').value.trim(),p=document.getElementById('profesorado').value.trim();cerrarDialogoPDF();const asunto='Solicitud de reserva de espacios LHACyS - '+t;const cuerpo='Buenos días,\r\n\r\nAdjunto la solicitud de reserva de espacios del LHACyS.\r\n\r\nTítulo del taller: '+t+'\r\nProfesorado / responsable: '+p+'\r\n\r\nIMPORTANTE: adjunte a este correo el archivo '+n+'.pdf antes de enviarlo.\r\n\r\nUn saludo.';window.location.href='mailto:'+DESTINATARIO+'?subject='+encodeURIComponent(asunto)+'&body='+encodeURIComponent(cuerpo)}
+function cerrarPestana(){window.close();setTimeout(()=>{if(!window.closed)alert('El navegador no ha permitido cerrar esta pestaña automáticamente. Puede cerrarla manualmente.')},250)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarDialogoPDF()});
+</script>
+</body>
+</html>
