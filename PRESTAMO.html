@@ -24,6 +24,9 @@ input,textarea{width:100%;padding:11px 12px;border:1px solid var(--linea);border
 input:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px #1a82e226}
 textarea{min-height:105px;line-height:1.45;resize:vertical;overflow:hidden}.large{min-height:130px}
 .print{display:none;min-height:38px;padding:10px;border:1px solid #ccc;border-radius:5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.catalogo-simuladores{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 18px;padding:16px 18px;border:1px solid #b9d8ed;border-left:5px solid var(--azul);border-radius:8px;background:var(--suave)}
+.catalogo-texto{min-width:0}.catalogo-texto strong{display:block;margin-bottom:5px;color:var(--tinta);font-size:1rem}.catalogo-texto span{display:block;color:var(--texto);font-size:.92rem;line-height:1.45}
+.catalogo-boton{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;padding:10px 16px;border-radius:7px;background:var(--azul2);color:#fff;font-weight:bold;text-decoration:none;white-space:nowrap;transition:.2s}.catalogo-boton:hover,.catalogo-boton:focus{background:#0d579a;box-shadow:0 4px 10px #1267b533;outline:none}
 .table-wrap{width:100%;overflow-x:hidden}
 table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--linea);border-radius:8px;overflow:hidden;background:#fff}
 th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #ebeef5;vertical-align:top}th{background:var(--suave);color:var(--azul2);font-weight:bold}tr:last-child td{border-bottom:0}.unidades{width:112px}.material-input{min-width:0}.unidad-input{min-width:0}
@@ -36,6 +39,8 @@ button{font-family:Arial,sans-serif}.action{padding:12px 24px;border:0;border-ra
 .modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;background:#142332a3;backdrop-filter:blur(3px)}.modal.show{display:flex}.panel{position:relative;width:min(590px,100%);overflow:hidden;border-radius:15px;background:#fff;box-shadow:0 20px 60px #0005}.mhead{display:flex;align-items:center;gap:16px;padding:22px 25px;background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff}.micon{display:flex;align-items:center;justify-content:center;flex:0 0 64px;height:64px;border-radius:14px;background:#ffffff29;font-size:2rem}.mhead h2{margin:0 35px 4px 0;font-size:1.32em}.mhead p{margin:0;color:#ffffffe0}.mcerrar{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#fff;font-size:2em;cursor:pointer}.mbody{padding:24px 27px 18px;line-height:1.5}.dato{margin:13px 0;padding:13px 15px;border:1px solid #dce5ed;border-radius:8px;background:#f8fafc}.etiqueta{display:block;margin-bottom:4px;color:#687582;font-size:.82em;font-weight:bold;text-transform:uppercase}.aviso{margin-top:18px;padding:14px 16px;border-left:4px solid var(--azul);border-radius:6px;background:#eef7ff}.mactions{display:flex;justify-content:flex-end;gap:12px;padding:18px 27px 25px}.mbtn{min-width:135px;padding:11px 20px;border-radius:7px;font-size:.98em;font-weight:bold;cursor:pointer}.secondary{border:1px solid #cbd3da;background:#fff;color:#4b5560}.primary{border:1px solid var(--verde2);background:var(--verde);color:#fff}
 
 @media(max-width:700px){
+  .catalogo-simuladores{flex-direction:column;align-items:stretch;padding:14px}
+  .catalogo-boton{width:100%;white-space:normal;text-align:center}
   .table-wrap{overflow-x:hidden}
   #tabla-material{width:100%;table-layout:fixed}
   #tabla-material .unidades{width:76px}
@@ -46,7 +51,7 @@ button{font-family:Arial,sans-serif}.action{padding:12px 24px;border:0;border-ra
 }
 @media(max-width:700px){.header{padding:12px 16px;gap:14px}.header img{width:68px;height:68px;flex-basis:68px}.header h1{font-size:1.18rem}.wrap{padding:0 16px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.buttons{flex-direction:column}.action{width:100%}}
 @media(max-width:560px){.mhead{padding:19px}.mbody{padding:21px 20px 15px}.mactions{flex-direction:column-reverse;padding:16px 20px 21px}.mbtn{width:100%}}
-@media print{@page{margin:11mm}body{background:#fff;font-size:10pt}.header{box-shadow:none;margin-bottom:16px;padding:9px 18px;background:var(--azul)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.header img{width:60px;height:60px;flex-basis:60px;box-shadow:none}.header h1{font-size:15pt}.wrap{padding:0;max-width:none}.volver,.intro,.buttons,.modal,.btn-add,.confirm input{display:none!important}.box{box-shadow:none;padding:13px;margin-bottom:13px;break-inside:auto}.box h2{font-size:12pt;margin-bottom:10px}.grid{gap:10px 14px}input,textarea{display:none!important}.print{display:block!important;min-height:34px}.field{break-inside:avoid}table{box-shadow:none}th,td{padding:8px 10px}.material-input,.unidad-input{display:none!important}.table-print{display:block!important}.confirm{margin-top:12px}.notes{font-size:9pt}}
+@media print{@page{margin:11mm}body{background:#fff;font-size:10pt}.header{box-shadow:none;margin-bottom:16px;padding:9px 18px;background:var(--azul)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.header img{width:60px;height:60px;flex-basis:60px;box-shadow:none}.header h1{font-size:15pt}.wrap{padding:0;max-width:none}.volver,.intro,.catalogo-simuladores,.buttons,.modal,.btn-add,.confirm input{display:none!important}.box{box-shadow:none;padding:13px;margin-bottom:13px;break-inside:auto}.box h2{font-size:12pt;margin-bottom:10px}.grid{gap:10px 14px}input,textarea{display:none!important}.print{display:block!important;min-height:34px}.field{break-inside:avoid}table{box-shadow:none}th,td{padding:8px 10px}.material-input,.unidad-input{display:none!important}.table-print{display:block!important}.confirm{margin-top:12px}.notes{font-size:9pt}}
 </style>
 </head>
 <body>
@@ -58,7 +63,12 @@ button{font-family:Arial,sans-serif}.action{padding:12px 24px;border:0;border-ra
 <div class="field"><label for="nombre">Nombre y apellidos <span class="req">*</span></label><input id="nombre" type="text" placeholder="Ej.: Dra. María García" required><div class="print"></div></div>
 <div class="field"><label for="telefono">Teléfono <span class="req">*</span></label><input id="telefono" type="tel" inputmode="tel" placeholder="Ej.: 600 000 000" required><div class="print"></div></div>
 </div></section>
-<section class="box"><h2>Material solicitado</h2><div class="table-wrap"><table id="tabla-material"><thead><tr><th class="unidades">Nº de unidades</th><th>Descripción / modelo</th></tr></thead><tbody></tbody></table></div><button type="button" class="btn-add" onclick="agregarFila()">＋ Añadir fila de material</button></section>
+<section class="box"><h2>Material solicitado</h2>
+<div class="catalogo-simuladores">
+  <div class="catalogo-texto"><strong>¿No sabe qué simuladores están disponibles?</strong><span>Consulte el inventario del LHACyS y escriba después el nombre y modelo en la tabla.</span></div>
+  <a class="catalogo-boton" href="https://airtable.com/app1IxCTzc7P7pwsf/shrLHUqZJF3NA6XDC" target="_blank" rel="noopener noreferrer">🔍 Consultar simuladores disponibles</a>
+</div>
+<div class="table-wrap"><table id="tabla-material"><thead><tr><th class="unidades">Nº de unidades</th><th>Descripción / modelo</th></tr></thead><tbody></tbody></table></div><button type="button" class="btn-add" onclick="agregarFila()">＋ Añadir fila de material</button></section>
 <section class="box"><h2>Recogida y devolución</h2><div class="grid">
 <div class="field"><label for="fechaRecogida">Fecha de recogida <span class="req">*</span></label><input id="fechaRecogida" type="date" required><div class="print"></div></div>
 <div class="field"><label for="horaRecogida">Hora de recogida <span class="req">*</span></label><input id="horaRecogida" type="time" required><div class="print"></div></div>
