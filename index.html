@@ -26,7 +26,7 @@
 @media(max-width:850px){.subgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.header-banner{padding:18px 14px 22px}.header-logo-box{width:100%;padding:9px 12px;margin-bottom:16px}.header-banner h1{font-size:1.22rem;white-space:normal}.container{padding:0 16px}.portal-options,.menu-talleres,.subgrid{grid-template-columns:1fr}.portal-card:last-child{grid-column:auto}.group-head{align-items:flex-start}}
 
-.portal-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:0}
+.portal-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
 .portal-card{display:flex;flex-direction:column;min-height:245px;padding:30px 28px;background:#fff;border:1px solid var(--linea);border-left:7px solid var(--verde);border-radius:16px;box-shadow:0 8px 24px #163d5a14;transition:.2s}
 .portal-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #163d5a22}
 .portal-title{display:flex;align-items:flex-start;gap:14px;margin:0 0 14px}
@@ -40,15 +40,37 @@
 [hidden]{display:none!important}
 
 
-/* Ajuste responsive final para las tarjetas */
-@media(max-width:1050px){.portal-options{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-card:last-child{grid-column:1/-1}}
-@media(max-width:650px){.portal-options{grid-template-columns:1fr!important;gap:18px}.portal-card,.portal-card:last-child{grid-column:auto!important;width:100%;min-width:0;min-height:0}.portal-card h2{font-size:1.18rem;overflow-wrap:anywhere}}
+/* Información y recursos */
+.recursos{margin-top:26px;padding:20px 22px;background:#fff;border:1px solid var(--linea);border-radius:14px;box-shadow:0 6px 18px #163d5a10}
+.recursos h2{margin:0 0 15px;color:var(--tinta);font-size:1.08rem}
+.recursos-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.recurso-link{display:flex;font-family:Arial,sans-serif;font-size:1rem;font-weight:700;cursor:pointer;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:11px 12px;border:1px solid #cfe0eb;border-radius:9px;background:#f8fbfd;color:var(--azul-oscuro);font-weight:700;text-align:center;text-decoration:none;transition:.2s}
+.recurso-link:hover,.recurso-link:focus{color:var(--verde);border-color:#8db9d6;background:#f1f8fc;transform:translateY(-1px);outline:none}
+.recurso-icono{flex:0 0 auto;font-size:1.25rem;line-height:1}
+@media(max-width:850px){.recursos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:450px){.recursos{padding:17px 15px}.recursos-grid{grid-template-columns:1fr}.recurso-link{justify-content:flex-start;text-align:left}}
+
+
+body.modal-abierto{overflow:hidden}
+.modal-normativa{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px}.modal-normativa.visible{display:flex}
+.modal-normativa-fondo{position:absolute;inset:0;background:#142332a3;backdrop-filter:blur(3px)}
+.modal-normativa-panel{position:relative;width:min(590px,100%);overflow:hidden;border-radius:15px;background:#fff;box-shadow:0 20px 60px #0005;animation:modalAparecer .22s ease-out}
+@keyframes modalAparecer{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-normativa-cabecera{display:flex;align-items:center;gap:16px;padding:22px 25px;color:#fff;background:linear-gradient(135deg,var(--azul),var(--azul-oscuro))}
+.modal-normativa-icono{display:flex;align-items:center;justify-content:center;flex:0 0 64px;height:64px;border-radius:14px;background:#ffffff29;font-size:2rem}
+.modal-normativa-cabecera h2{margin:0 38px 4px 0;font-size:1.32rem}.modal-normativa-cabecera p{margin:0;color:#ffffffe0;font-size:.93rem;line-height:1.4}
+.modal-normativa-cerrar{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#fff;font-size:2rem;cursor:pointer}
+.modal-normativa-contenido{padding:25px 27px 18px;color:#3d4852;line-height:1.6}.modal-normativa-aviso{padding:14px 16px;border-left:4px solid var(--azul);border-radius:6px;background:#eef7ff;color:var(--tinta)}
+.modal-normativa-acciones{display:flex;justify-content:flex-end;gap:11px;padding:18px 27px 25px}.modal-normativa-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 17px;border-radius:7px;font:700 .95rem Arial,sans-serif;text-decoration:none;cursor:pointer}
+.modal-normativa-cancelar{border:1px solid #cbd3da;background:#fff;color:#4b5560}.modal-normativa-consultar{border:1px solid var(--azul-oscuro);background:var(--azul-oscuro);color:#fff}.modal-normativa-descargar{border:1px solid #245f1b;background:var(--verde);color:#fff}
+@media(max-width:600px){.modal-normativa-cabecera{padding:19px}.modal-normativa-contenido{padding:21px 20px 15px}.modal-normativa-acciones{flex-direction:column-reverse;padding:16px 20px 21px}.modal-normativa-btn{width:100%}}
 </style>
 </head>
 <body>
 <header class="header-banner"><div class="header-logo-box"><img class="header-logo" src="logo_LHACyS_corto.jpg" alt="Universidad Autónoma de Madrid y Laboratorio de Habilidades Clínicas y Simulación"></div><h1 id="pageTitle">Sistema de Formularios LHACyS</h1></header>
 
 <main id="portal" class="container">
+<p class="intro">Selecciona el tipo de formulario que deseas utilizar para acceder al sistema correspondiente.</p>
 <section class="portal-options" aria-label="Tipos de formulario">
 <article class="portal-card">
 <div class="portal-title"><span class="portal-icon" aria-hidden="true">🏢</span><h2>Formularios de Solicitud de Espacios LHACyS</h2></div>
@@ -65,6 +87,15 @@
 <p>Solicita el préstamo de material del Laboratorio de Habilidades Clínicas y Simulación para la realización de una actividad.</p>
 <a class="portal-button" href="PRESTAMO.html">Acceder a Préstamo</a>
 </article>
+</section>
+<section class="recursos" aria-labelledby="recursos-titulo">
+  <h2 id="recursos-titulo">Información y recursos</h2>
+  <div class="recursos-grid">
+    <button class="recurso-link" type="button" onclick="abrirNormativa()"><span class="recurso-icono" aria-hidden="true">📋</span><span>Normativa LHACyS</span></button>
+    <a class="recurso-link" href="https://airtable.com/app1IxCTzc7P7pwsf/shrLHUqZJF3NA6XDC" target="_blank" rel="noopener noreferrer"><span class="recurso-icono" aria-hidden="true">🩺</span><span>Inventario de simuladores</span></a>
+    <a class="recurso-link" href="https://outlook.office365.com/owa/calendar/SIMULOTECA@dauam.onmicrosoft.com/bookings/" target="_blank" rel="noopener noreferrer"><span class="recurso-icono" aria-hidden="true">📅</span><span>Simuloteca</span></a>
+    <a class="recurso-link" href="https://www.uam.es/medicina/facultad/espacios-infraestructuras/laboratorio-habilidades-clinicas" target="_blank" rel="noopener noreferrer"><span class="recurso-icono" aria-hidden="true">🌐</span><span>Web oficial del LHACyS</span></a>
+  </div>
 </section>
 </main>
 <main id="materiales" class="container" hidden>
@@ -119,7 +150,20 @@
 </div>
 
 </main>
+
+<div id="modalNormativa" class="modal-normativa" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalNormativaTitulo">
+  <div class="modal-normativa-fondo" onclick="cerrarNormativa()"></div>
+  <div class="modal-normativa-panel">
+    <div class="modal-normativa-cabecera"><div class="modal-normativa-icono" aria-hidden="true">📋</div><div><h2 id="modalNormativaTitulo">Normativa de uso del LHACyS</h2><p>Va a consultar la normativa de utilización y reserva del Laboratorio de Habilidades Clínicas y Simulación.</p></div><button type="button" class="modal-normativa-cerrar" onclick="cerrarNormativa()" aria-label="Cerrar">&times;</button></div>
+    <div class="modal-normativa-contenido"><div class="modal-normativa-aviso">Puede abrir el documento en una pestaña nueva o descargar una copia en formato PDF.</div></div>
+    <div class="modal-normativa-acciones"><button type="button" class="modal-normativa-btn modal-normativa-cancelar" onclick="cerrarNormativa()">Cancelar</button><a class="modal-normativa-btn modal-normativa-consultar" href="NORMATIVA_LHACyS.pdf" target="_blank" rel="noopener noreferrer" onclick="cerrarNormativa()">Consultar normativa</a><a class="modal-normativa-btn modal-normativa-descargar" href="NORMATIVA_LHACyS.pdf" download>Descargar PDF</a></div>
+  </div>
+</div>
 <script>
+function abrirNormativa(){const m=document.getElementById('modalNormativa');m.classList.add('visible');m.setAttribute('aria-hidden','false');document.body.classList.add('modal-abierto');m.querySelector('.modal-normativa-consultar').focus();}
+function cerrarNormativa(){const m=document.getElementById('modalNormativa');m.classList.remove('visible');m.setAttribute('aria-hidden','true');document.body.classList.remove('modal-abierto');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrarNormativa();});
+
 function abrirTaller(urlArchivo){window.open(urlArchivo,'_blank');}
 function mostrarMateriales(){document.getElementById('portal').hidden=true;document.getElementById('materiales').hidden=false;document.getElementById('pageTitle').textContent='Formularios de Solicitud de Material de los Talleres LHACyS';window.scrollTo({top:0,behavior:'smooth'});}
 function volverAlPortal(){document.getElementById('materiales').hidden=true;document.getElementById('portal').hidden=false;document.getElementById('pageTitle').textContent='Sistema de Formularios LHACyS';window.scrollTo({top:0,behavior:'smooth'});}
