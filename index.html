@@ -39,6 +39,18 @@
 .back-button:hover{color:var(--verde);border-color:#8db9d6}
 [hidden]{display:none!important}
 
+
+/* Ajuste responsive final: colocado despues de los estilos generales */
+@media(max-width:1050px){
+  .portal-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-card:last-child{grid-column:1/-1}
+}
+@media(max-width:650px){
+  .portal-options{grid-template-columns:1fr!important;gap:18px}
+  .portal-card,.portal-card:last-child{grid-column:auto!important;width:100%;min-width:0;min-height:0}
+  .portal-title{align-items:flex-start}
+  .portal-card h2{font-size:1.18rem;overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>
